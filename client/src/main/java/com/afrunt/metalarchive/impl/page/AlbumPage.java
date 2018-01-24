@@ -71,7 +71,11 @@ public class AlbumPage implements WithUtilities {
     }
 
     private String cleanTrackName(String original) {
-        return original.replace("\n", "").replace("\r", "").replace("  ", " ");
+        String originalCleared = original.replace("\n", "").replace("\r", "").replace("  ", " ");
+        while (originalCleared.contains("  ")) {
+            originalCleared = originalCleared.replace("  ", " ");
+        }
+        return originalCleared;
     }
 
     private String extractLyrics(TagNode row) {
