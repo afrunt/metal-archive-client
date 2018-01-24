@@ -67,7 +67,11 @@ public class AlbumPage implements WithUtilities {
         }
 
         return trackInfo
-                .setName(columns.get(1).getText().toString().trim());
+                .setName(cleanTrackName(columns.get(1).getText().toString().trim()));
+    }
+
+    private String cleanTrackName(String original) {
+        return original.replace("\n", "").replace("\r", "").replace("  ", " ");
     }
 
     private String extractLyrics(TagNode row) {
