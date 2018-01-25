@@ -33,7 +33,7 @@ public class BandPage implements WithUtilities {
             description = page.findElementByAttValue("class", "band_comment clear", true, true).getText().toString();
         }
 
-        description = new HtmlCleaner().clean(description).getText().toString().trim();
+        description = new HtmlCleaner().clean(description).getText().toString().trim().replace("\n", " ").replace("\r", "");
 
         Map<String, String> statsMap = extractStatsMap(page.findElementByAttValue("id", "band_stats", true, true));
 
